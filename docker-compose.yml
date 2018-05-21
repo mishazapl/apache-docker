@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  web:
+    build: ./services/php
+    ports:
+          - "80:80"
+          - "443:443"
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - postgresql
+
+  postgresql: 
+    environment: 
+      POSTGRES_DB: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_USER: admin
+    image: "postgres:latest"
+    ports: 
+      - "3306:3306"
+    volumes: 
+      - "./postgresql:/var/lib/postgresql"
+
