@@ -14,5 +14,11 @@ RUN apt-get update && apt-get install -y libpq-dev \
 # Куда же без composer'а.
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+RUN composer global require "laravel/installer"
+
+# Раскоментировать после git clone.
+#RUN cd /var/www && composer update
+
 # Указываем рабочую директорию для PHP
 WORKDIR /var/www
+
